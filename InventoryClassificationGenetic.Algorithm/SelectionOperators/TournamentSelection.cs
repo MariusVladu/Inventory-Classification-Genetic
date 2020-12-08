@@ -28,7 +28,7 @@ namespace InventoryClassificationGenetic.Algorithm.SelectionOperators
                     selectedForTournament.Add(randomSolution);
             }
 
-            return selectedForTournament.OrderBy(x => x.FitnessScore).First().Individual;
+            return selectedForTournament.OrderByDescending(x => x.FitnessScore).First().Individual;
         }
     }
 }

@@ -26,18 +26,29 @@ namespace InventoryClassificationGenetic.Providers
 
             for (int i = 0; i < numberOfCriterias; i++)
             {
-                var randomWeight = random.Next(0, remainingTotalWeight);
+                var randomWeight = random.Next(0, remainingTotalWeight + 1);
                 remainingTotalWeight -= randomWeight;
 
                 weights[i] = randomWeight / 10000.0;
             }
 
             for (int i = 0; i < numberOfCriterias; i++)
-                weights[i] += remainingTotalWeight / 10000.0;
+                weights[i] += (remainingTotalWeight / 10000.0) / numberOfCriterias;
+
+            var Xab = random.Next(50, 91) / 100.0;
+            var Xbc = random.Next(10, 50) / 100.0;
+            if(Xab < Xbc)
+            {
+                var temp = Xab;
+                Xab = Xbc;
+                Xbc = temp;
+            }
 
             return new Individual
             {
-                Weights = weights
+                Weights = weights,
+                Xab = Xab,
+                Xbc = Xbc
             };
         }
     }

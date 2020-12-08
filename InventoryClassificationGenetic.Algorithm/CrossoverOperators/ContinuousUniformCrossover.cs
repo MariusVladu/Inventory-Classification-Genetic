@@ -42,7 +42,7 @@ namespace InventoryClassificationGenetic.Algorithm.CrossoverOperators
 
         private static void NormalizeOffspring(Individual offspring)
         {
-            var min = offspring.Weights.Min();
+            var min = offspring.Weights.Union(new[] { offspring.Xab, offspring.Xbc }).Min();
 
             if (min < 0)
             {
@@ -53,6 +53,12 @@ namespace InventoryClassificationGenetic.Algorithm.CrossoverOperators
 
                 for (int i = 0; i < offspring.Weights.Length; i++)
                     offspring.Weights[i] /= sum;
+
+                offspring.Xab -= min;
+                offspring.Xbc -= min;
+
+                offspring.Xab /= sum;
+                offspring.Xbc /= sum;
 
                 if (offspring.Xab < offspring.Xbc)
                 {

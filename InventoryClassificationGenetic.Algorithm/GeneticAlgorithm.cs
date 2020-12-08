@@ -39,7 +39,7 @@ namespace InventoryClassificationGenetic.Algorithm
             this.crossoverOperator = crossoverOperator;
             this.mutationOperator = mutationOperator;
 
-            currentPopulation = initialPopulationProvider.GetInitialPopulation(settings.PopulationSize, settings.Inventory.Count);
+            currentPopulation = initialPopulationProvider.GetInitialPopulation(settings.PopulationSize, settings.NumberOfCriterias);
             ComputeCurrentGenerationData();
         }
 
@@ -50,7 +50,7 @@ namespace InventoryClassificationGenetic.Algorithm
             while (nextGeneration.Count < settings.PopulationSize)
             {
                 var parent1 = selectionOperator.SelectOne(CurrentSolutions);
-                var parent2 = selectionOperator.SelectOne(CurrentSolutions);
+                var parent2 = selectionOperator.SelectOne(CurrentSolutions.Where(x => !ReferenceEquals(x, parent1)).ToList());
 
                 var offsprings = crossoverOperator.GetOffsprings(parent1, parent2, settings.CrossoverRate);
 
@@ -92,7 +92,7 @@ namespace InventoryClassificationGenetic.Algorithm
             CurrentGenerationNumber++;
             CurrentSolutions = GetCurrentSolutions();
             AverageScore = CurrentSolutions.Average(s => s.FitnessScore);
-            CurrentBestSolution = CurrentSolutions.OrderBy(s => s.FitnessScore).First();
+            CurrentBestSolution = CurrentSolutions.OrderByDescending(s => s.FitnessScore).First();
         }
 
         private List<Solution> GetCurrentSolutions()

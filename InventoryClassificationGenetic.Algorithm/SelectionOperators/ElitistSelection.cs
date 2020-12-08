@@ -9,12 +9,12 @@ namespace InventoryClassificationGenetic.Algorithm.SelectionOperators
     {
         public List<Solution> SelectMany(int n, List<Solution> solutions)
         {
-            return solutions.OrderBy(s => s.FitnessScore).Take(n).ToList();
+            return solutions.OrderByDescending(s => s.FitnessScore).Take(n).ToList();
         }
 
         Solution IElitistSelection.SelectOne(List<Solution> solutions)
         {
-            return solutions.OrderBy(s => s.FitnessScore).First();
+            return solutions.OrderByDescending(s => s.FitnessScore).First();
         }
     }
 }

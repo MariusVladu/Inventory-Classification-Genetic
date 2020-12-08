@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using InventoryClassificationGenetic.Providers.Contracts;
+using System;
 
 namespace InventoryClassificationGenetic.Providers.UnitTests
 {
@@ -41,6 +42,17 @@ namespace InventoryClassificationGenetic.Providers.UnitTests
         }
 
         [TestMethod]
+        public void TestThatEachIndividualHasXabGreaterThanXbc()
+        {
+            var initialPopulation = initialPopulationProvider.GetInitialPopulation(50, 5);
+
+            foreach (var individual in initialPopulation)
+            {
+                Assert.IsTrue(individual.Xab > individual.Xbc);
+            }
+        }
+
+        [TestMethod]
         public void TestThatAllPopulationMembersHaveWeightsTotalSum1()
         {
             var initialPopulation = initialPopulationProvider.GetInitialPopulation(50, 5);
@@ -48,7 +60,7 @@ namespace InventoryClassificationGenetic.Providers.UnitTests
             foreach (var individual in initialPopulation)
             {
                 var weightsSum = individual.Weights.Sum();
-                Assert.IsTrue(1.0 - weightsSum < 0.01);
+                Assert.IsTrue(Math.Abs(1 - weightsSum) < 0.0001);
             }
         }
     }

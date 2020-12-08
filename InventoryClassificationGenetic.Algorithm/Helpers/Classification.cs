@@ -6,34 +6,34 @@ namespace InventoryClassificationGenetic.Algorithm.Helpers
 {
     public class Classification
     {
-        private readonly double minAnnualDollarUsage;
-        private readonly double maxAnnualDollarUsage;
+        private readonly double minLeadTime;
+        private readonly double maxLeadTime;
 
-        private readonly double minNumberOfRequestsPerYear;
-        private readonly double maxNumberOfRequestsPerYear;
+        private readonly double minAnnualDemand;
+        private readonly double maxAnnualDemand;
 
-        private readonly double minUnitPrice;
-        private readonly double maxUnitPrice;
+        private readonly double minAverageUnitCost;
+        private readonly double maxAverageUnitCost;
 
         public Classification(List<Item> inventory)
         {
-            minAnnualDollarUsage = inventory.Min(x => x.AnnualDollarUsage);
-            maxAnnualDollarUsage = inventory.Max(x => x.AnnualDollarUsage);
+            minLeadTime = inventory.Min(x => x.LeadTime);
+            maxLeadTime = inventory.Max(x => x.LeadTime);
 
-            minNumberOfRequestsPerYear = inventory.Min(x => x.NumberOfRequestsPerYear);
-            maxNumberOfRequestsPerYear = inventory.Max(x => x.NumberOfRequestsPerYear);
+            minAnnualDemand = inventory.Min(x => x.AnnualDemand);
+            maxAnnualDemand = inventory.Max(x => x.AnnualDemand);
 
-            minUnitPrice = inventory.Min(x => x.UnitPrice);
-            maxUnitPrice = inventory.Max(x => x.UnitPrice);
+            minAverageUnitCost = inventory.Min(x => x.AverageUnitCost);
+            maxAverageUnitCost = inventory.Max(x => x.AverageUnitCost);
         }
 
         public ItemClass ClassifyItem(Item item, Individual individual)
         {
             var weightedSum = 0.0;
 
-            weightedSum += individual.Weights[0] * (item.AnnualDollarUsage - minAnnualDollarUsage) / (maxAnnualDollarUsage - minAnnualDollarUsage);
-            weightedSum += individual.Weights[1] * (item.NumberOfRequestsPerYear - minNumberOfRequestsPerYear) / (maxNumberOfRequestsPerYear - minNumberOfRequestsPerYear);
-            weightedSum += individual.Weights[2] * (item.UnitPrice - minUnitPrice) / (maxUnitPrice - minUnitPrice);
+            weightedSum += individual.Weights[0] * (item.LeadTime - minLeadTime) / (maxLeadTime - minLeadTime);
+            weightedSum += individual.Weights[1] * (item.AnnualDemand - minAnnualDemand) / (maxAnnualDemand - minAnnualDemand);
+            weightedSum += individual.Weights[2] * (item.AverageUnitCost - minAverageUnitCost) / (maxAverageUnitCost - minAverageUnitCost);
 
             if (individual.Xab <= weightedSum)
                 return ItemClass.A;

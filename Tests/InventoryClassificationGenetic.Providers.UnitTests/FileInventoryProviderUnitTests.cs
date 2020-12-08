@@ -29,21 +29,21 @@ namespace InventoryClassificationGenetic.Providers.UnitTests
 
         private string GetFileContent()
         {
-            return @"Item,Annual Dollar Usage, Number Of Requests Per Year, Unit Price
-R12,8910,2700,0.33,A
-R13,7520,4700,1.6,A
-R16,10304,3200,3.22,B
-R20,26600,20000,1.33,C";
+            return @"Item,Lead time (weeks),Annual demand (units),Average unit cost ($),Class
+1,7,12,86.5,A
+2,7,2,134.34,A
+3,7,27,7.07,B
+4,7,1,34.4,C";
         }
 
         private List<Item> GetCities()
         {
             return new List<Item>
             {
-                new Item { Identifier = "R12", AnnualDollarUsage = 8910, NumberOfRequestsPerYear = 2700, UnitPrice = 0.33, Class = ItemClass.A },
-                new Item { Identifier = "R13", AnnualDollarUsage = 7520, NumberOfRequestsPerYear = 4700, UnitPrice = 1.6, Class = ItemClass.A },
-                new Item { Identifier = "R16", AnnualDollarUsage = 10304, NumberOfRequestsPerYear = 3200, UnitPrice = 3.22, Class = ItemClass.B },
-                new Item { Identifier = "R20", AnnualDollarUsage = 26600, NumberOfRequestsPerYear = 20000, UnitPrice = 1.33, Class = ItemClass.C },
+                new Item { Identifier = "1", LeadTime = 7, AnnualDemand = 12, AverageUnitCost = 86.5, Class = ItemClass.A },
+                new Item { Identifier = "2", LeadTime = 7, AnnualDemand = 2, AverageUnitCost = 134.34, Class = ItemClass.A },
+                new Item { Identifier = "3", LeadTime = 7, AnnualDemand = 27, AverageUnitCost = 7.07, Class = ItemClass.B },
+                new Item { Identifier = "4", LeadTime = 7, AnnualDemand = 1, AverageUnitCost = 34.4, Class = ItemClass.C },
             };
         }
     }

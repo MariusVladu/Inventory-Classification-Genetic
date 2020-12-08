@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace InventoryClassificationGenetic.Domain
 {
@@ -9,7 +10,10 @@ namespace InventoryClassificationGenetic.Domain
 
         public override string ToString()
         {
-            return $"{string.Join( ", ", Individual.Weights)} - Score = {FitnessScore}";
+            return $"Weights: {string.Join( ", ", Individual.Weights.Select(w => Math.Round(w, 4)))} " +
+                $"\nXab: {Individual.Xab} " +
+                $"\nXbc: {Individual.Xbc} " +
+                $"\nScore = {Math.Round(FitnessScore, 4)}";
         }
     }
 }

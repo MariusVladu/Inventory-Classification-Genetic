@@ -27,9 +27,9 @@ namespace InventoryClassificationGenetic.Providers
                 inventory.Add(new Item
                 {
                     Identifier = criterias[0],
-                    AnnualDollarUsage = Convert.ToDouble(criterias[1]),
-                    NumberOfRequestsPerYear = Convert.ToDouble(criterias[2]),
-                    UnitPrice = Convert.ToDouble(criterias[3]),
+                    LeadTime = Convert.ToDouble(criterias[1]),
+                    AnnualDemand = Convert.ToDouble(criterias[2]),
+                    AverageUnitCost = Convert.ToDouble(criterias[3]),
                     Class = (ItemClass)Enum.Parse(typeof(ItemClass), criterias[4])
                 });
             }
