@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryClassificationGenetic.Domain\InventoryClassificationGenetic.Domain.csproj" />
+    <ProjectReference Include="..\InventoryClassificationGenetic.Providers\InventoryClassificationGenetic.Providers.csproj" />
+  </ItemGroup>
+
+</Project>

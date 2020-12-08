@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryClassificationGenetic.Algorithm", "InventoryClassificationGenetic.Algorithm\InventoryClassificationGenetic.Algorithm.csproj", "{DDAFCD49-0BFC-4A4A-A17B-798C76A46155}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryClassificationGenetic.Domain", "InventoryClassificationGenetic.Domain\InventoryClassificationGenetic.Domain.csproj", "{00077077-A83C-4425-9BB2-C7AA39D62CAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryClassificationGenetic.Providers", "InventoryClassificationGenetic.Providers\InventoryClassificationGenetic.Providers.csproj", "{FD0E11A1-8A4E-46EB-BF64-5F74B33C6148}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryClassificationGenetic.UI", "InventoryClassificationGenetic.UI\InventoryClassificationGenetic.UI.csproj", "{32F79AB5-36CD-4F8C-A781-0432915D80A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E1CA14A9-40BF-43EC-8F92-B2F4AE2BBE4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryClassificationGenetic.Algorithm.UnitTests", "Tests\InventoryClassificationGenetic.Algorithm.UnitTests\InventoryClassificationGenetic.Algorithm.UnitTests.csproj", "{3F6EDF1B-35D9-4AA8-9584-F34107149F3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryClassificationGenetic.Providers.UnitTests", "Tests\InventoryClassificationGenetic.Providers.UnitTests\InventoryClassificationGenetic.Providers.UnitTests.csproj", "{B08326E4-7ACF-48CA-A8DA-263F17D9725D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDAFCD49-0BFC-4A4A-A17B-798C76A46155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDAFCD49-0BFC-4A4A-A17B-798C76A46155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDAFCD49-0BFC-4A4A-A17B-798C76A46155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDAFCD49-0BFC-4A4A-A17B-798C76A46155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00077077-A83C-4425-9BB2-C7AA39D62CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00077077-A83C-4425-9BB2-C7AA39D62CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00077077-A83C-4425-9BB2-C7AA39D62CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00077077-A83C-4425-9BB2-C7AA39D62CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0E11A1-8A4E-46EB-BF64-5F74B33C6148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0E11A1-8A4E-46EB-BF64-5F74B33C6148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0E11A1-8A4E-46EB-BF64-5F74B33C6148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0E11A1-8A4E-46EB-BF64-5F74B33C6148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F79AB5-36CD-4F8C-A781-0432915D80A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F79AB5-36CD-4F8C-A781-0432915D80A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F79AB5-36CD-4F8C-A781-0432915D80A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F79AB5-36CD-4F8C-A781-0432915D80A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F6EDF1B-35D9-4AA8-9584-F34107149F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F6EDF1B-35D9-4AA8-9584-F34107149F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F6EDF1B-35D9-4AA8-9584-F34107149F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F6EDF1B-35D9-4AA8-9584-F34107149F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08326E4-7ACF-48CA-A8DA-263F17D9725D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08326E4-7ACF-48CA-A8DA-263F17D9725D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08326E4-7ACF-48CA-A8DA-263F17D9725D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08326E4-7ACF-48CA-A8DA-263F17D9725D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3F6EDF1B-35D9-4AA8-9584-F34107149F3F} = {E1CA14A9-40BF-43EC-8F92-B2F4AE2BBE4B}
+		{B08326E4-7ACF-48CA-A8DA-263F17D9725D} = {E1CA14A9-40BF-43EC-8F92-B2F4AE2BBE4B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1752193-C3C6-481A-A798-D1366D4F22AD}
+	EndGlobalSection
+EndGlobal
