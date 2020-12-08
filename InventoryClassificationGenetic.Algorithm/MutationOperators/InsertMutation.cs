@@ -13,8 +13,8 @@ namespace InventoryClassificationGenetic.Algorithm.MutationOperators
         {
             if (random.NextDouble() > mutationRate) return;
 
-            int leftIndex = random.Next(individual.Genes.Length);
-            int rightIndex = random.Next(individual.Genes.Length);
+            int leftIndex = random.Next(individual.Weights.Length);
+            int rightIndex = random.Next(individual.Weights.Length);
 
             ApplyInsertMutation(individual, leftIndex, rightIndex);
         }
@@ -22,14 +22,14 @@ namespace InventoryClassificationGenetic.Algorithm.MutationOperators
         public void ApplyInsertMutation(Individual individual, int leftIndex, int rightIndex)
         {
             CommonFunctions.SwapIfNotInOrder(ref leftIndex, ref rightIndex);
-            AdjustIndexesIfTheyAreTooClose(ref leftIndex, ref rightIndex, individual.Genes.Length);
+            AdjustIndexesIfTheyAreTooClose(ref leftIndex, ref rightIndex, individual.Weights.Length);
 
-            var geneToInsert = individual.Genes[rightIndex];
+            var geneToInsert = individual.Weights[rightIndex];
 
             for (int i = rightIndex; i >= leftIndex + 2; i--)
-                individual.Genes[i] = individual.Genes[i - 1];
+                individual.Weights[i] = individual.Weights[i - 1];
 
-            individual.Genes[leftIndex + 1] = geneToInsert;
+            individual.Weights[leftIndex + 1] = geneToInsert;
         }
 
         private void AdjustIndexesIfTheyAreTooClose(ref int leftIndex, ref int rightIndex, int numberOfGenes)

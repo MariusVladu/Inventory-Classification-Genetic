@@ -30,9 +30,9 @@ namespace InventoryClassificationGenetic.Algorithm.CrossoverOperators
         private void ValidateParameters(Individual parent1, Individual parent2, double crossoverRate)
         {
             if (parent1 == null) throw new ArgumentNullException(nameof(parent1));
-            if (parent1.Genes == null) throw new ArgumentNullException(nameof(parent1.Genes));
+            if (parent1.Weights == null) throw new ArgumentNullException(nameof(parent1.Weights));
             if (parent2 == null) throw new ArgumentNullException(nameof(parent2));
-            if (parent2.Genes == null) throw new ArgumentNullException(nameof(parent2.Genes));
+            if (parent2.Weights == null) throw new ArgumentNullException(nameof(parent2.Weights));
             if (crossoverRate < 0 || crossoverRate > 1) throw new ArgumentException($"{nameof(crossoverRate)} must be in [0, 1]");
         }
     }

@@ -23,12 +23,12 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int left = 1;
             const int right = 5;
-            var initialGenes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var individual = new Individual { Weights = initialGenes };
 
             scrambleMutation.ApplyScrambleMutation(individual, left, right);
 
-            var distinctGenes = individual.Genes.Distinct();
+            var distinctGenes = individual.Weights.Distinct();
             Assert.AreEqual(initialGenes.Count(), distinctGenes.Count());
         }
 
@@ -37,13 +37,13 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int left = 1;
             const int right = 5;
-            var initialGenes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var unchangedGenes = (int[])initialGenes.Clone();
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var unchangedGenes = (double[])initialGenes.Clone();
+            var individual = new Individual { Weights = initialGenes };
 
             scrambleMutation.ApplyScrambleMutation(individual, left, right);
 
-            CollectionAssert.AreNotEqual(unchangedGenes, individual.Genes);
+            CollectionAssert.AreNotEqual(unchangedGenes, individual.Weights);
         }
 
         [TestMethod]
@@ -51,17 +51,17 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int left = 1;
             const int right = 5;
-            var initialGenes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var unchangedGenes = (int[])initialGenes.Clone();
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var unchangedGenes = (double[])initialGenes.Clone();
+            var individual = new Individual { Weights = initialGenes };
 
             scrambleMutation.ApplyScrambleMutation(individual, left, right);
 
             for (int i = 0; i < left; i++)
-                Assert.AreEqual(unchangedGenes[i], individual.Genes[i]);
+                Assert.AreEqual(unchangedGenes[i], individual.Weights[i]);
 
             for (int i = right; i < initialGenes.Length; i++)
-                Assert.AreEqual(unchangedGenes[i], individual.Genes[i]);
+                Assert.AreEqual(unchangedGenes[i], individual.Weights[i]);
         }
     }
 }

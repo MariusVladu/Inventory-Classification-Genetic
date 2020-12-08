@@ -2,13 +2,17 @@
 {
     public class Individual
     {
-        public int[] Genes { get; set; }
+        public double[] Weights { get; set; }
+        public double Xab { get; set; }
+        public double Xbc { get; set; }
 
         public Individual Clone()
         {
             return new Individual
             {
-                Genes = (int[])this.Genes.Clone()
+                Weights = (double[])this.Weights.Clone(),
+                Xab = this.Xab,
+                Xbc = this.Xbc
             };
         }
     }

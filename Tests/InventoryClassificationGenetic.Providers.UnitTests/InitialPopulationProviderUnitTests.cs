@@ -36,19 +36,19 @@ namespace InventoryClassificationGenetic.Providers.UnitTests
 
             foreach (var individual in initialPopulation)
             {
-                Assert.AreEqual(numberOfGenes, individual.Genes.Length);
+                Assert.AreEqual(numberOfGenes, individual.Weights.Length);
             }
         }
 
         [TestMethod]
-        public void TestThatAllPopulationMembersHaveOnlyDistinctGenes()
+        public void TestThatAllPopulationMembersHaveWeightsTotalSum1()
         {
-            var initialPopulation = initialPopulationProvider.GetInitialPopulation(50, 20);
+            var initialPopulation = initialPopulationProvider.GetInitialPopulation(50, 5);
 
             foreach (var individual in initialPopulation)
             {
-                var distinctGenes = individual.Genes.Distinct();
-                Assert.AreEqual(individual.Genes.Length, distinctGenes.Count());
+                var weightsSum = individual.Weights.Sum();
+                Assert.IsTrue(1.0 - weightsSum < 0.01);
             }
         }
     }

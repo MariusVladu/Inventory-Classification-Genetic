@@ -22,13 +22,13 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int leftIndex = 1;
             const int rightIndex = 5;
-            var initialGenes =  new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var expectedGenes = new int[] { 1, 5, 4, 3, 2, 6, 7, 8, 9 };
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes =  new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var expectedGenes = new double[] { 1, 5, 4, 3, 2, 6, 7, 8, 9 };
+            var individual = new Individual { Weights = initialGenes };
 
             inversionMutation.ApplyInversionMutation(individual, leftIndex, rightIndex);
 
-            CollectionAssert.AreEqual(expectedGenes, individual.Genes);
+            CollectionAssert.AreEqual(expectedGenes, individual.Weights);
         }
 
         [TestMethod]
@@ -36,13 +36,13 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int leftIndex = 5;
             const int rightIndex = 1;
-            var initialGenes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var expectedGenes = new int[] { 1, 5, 4, 3, 2, 6, 7, 8, 9 };
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var expectedGenes = new double[] { 1, 5, 4, 3, 2, 6, 7, 8, 9 };
+            var individual = new Individual { Weights = initialGenes };
 
             inversionMutation.ApplyInversionMutation(individual, leftIndex, rightIndex);
 
-            CollectionAssert.AreEqual(expectedGenes, individual.Genes);
+            CollectionAssert.AreEqual(expectedGenes, individual.Weights);
         }
 
         [TestMethod]
@@ -50,13 +50,13 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int leftIndex = 1;
             const int rightIndex = 1;
-            var initialGenes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var expectedGenes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var expectedGenes = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var individual = new Individual { Weights = initialGenes };
 
             inversionMutation.ApplyInversionMutation(individual, leftIndex, rightIndex);
 
-            CollectionAssert.AreEqual(expectedGenes, individual.Genes);
+            CollectionAssert.AreEqual(expectedGenes, individual.Weights);
         }
     }
 }

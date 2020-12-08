@@ -4,6 +4,6 @@ namespace InventoryClassificationGenetic.Algorithm.Contracts
 {
     public interface IFitnessFunction
     {
-        int GetFitnessScore(Individual individual);
+        double GetFitnessScore(Individual individual);
     }
 }

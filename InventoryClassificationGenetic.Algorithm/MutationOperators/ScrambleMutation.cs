@@ -15,8 +15,8 @@ namespace InventoryClassificationGenetic.Algorithm.MutationOperators
         {
             if (random.NextDouble() > mutationRate) return;
 
-            int left = random.Next(individual.Genes.Length);
-            int right = random.Next(individual.Genes.Length);
+            int left = random.Next(individual.Weights.Length);
+            int right = random.Next(individual.Weights.Length);
 
             ApplyScrambleMutation(individual, left, right);
         }
@@ -32,14 +32,14 @@ namespace InventoryClassificationGenetic.Algorithm.MutationOperators
                 .ToList();
 
             for (int i = left; i < right; i++)
-                individual.Genes[i] = scrambledGenes[i - left];
+                individual.Weights[i] = scrambledGenes[i - left];
         }
 
-        private List<int> GetGenesToScramble(int left, int right, Individual individual)
+        private List<double> GetGenesToScramble(int left, int right, Individual individual)
         {
-            var genesToScramble = new List<int>(individual.Genes.Length);
+            var genesToScramble = new List<double>(individual.Weights.Length);
             for (int i = left; i < right; i++)
-                genesToScramble.Add(individual.Genes[i]);
+                genesToScramble.Add(individual.Weights[i]);
 
             return genesToScramble;
         }

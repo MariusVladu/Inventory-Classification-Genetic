@@ -23,15 +23,15 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.CrossoverOperators
         {
             const int left = 3;
             const int right = 7;
-            var parent1 = new Individual { Genes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
-            var parent2 = new Individual { Genes = new int[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
-            var expectedOffspring1 = new Individual { Genes = new int[] { 3, 8, 2, 4, 5, 6, 7, 1, 9 } };
-            var expectedOffspring2 = new Individual { Genes = new int[] { 3, 4, 7, 8, 2, 6, 5, 9, 1 } };
+            var parent1 = new Individual { Weights = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
+            var parent2 = new Individual { Weights = new double[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
+            var expectedOffspring1 = new Individual { Weights = new double[] { 3, 8, 2, 4, 5, 6, 7, 1, 9 } };
+            var expectedOffspring2 = new Individual { Weights = new double[] { 3, 4, 7, 8, 2, 6, 5, 9, 1 } };
 
             var result = orderOneCrossover.PerformOrderOneCrossover(parent1, parent2, left, right);
 
-            CollectionAssert.AreEqual(expectedOffspring1.Genes, result.Item1.Genes);
-            CollectionAssert.AreEqual(expectedOffspring2.Genes, result.Item2.Genes);
+            CollectionAssert.AreEqual(expectedOffspring1.Weights, result.Item1.Weights);
+            CollectionAssert.AreEqual(expectedOffspring2.Weights, result.Item2.Weights);
         }
 
         [TestMethod]
@@ -39,12 +39,12 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.CrossoverOperators
         {
             const int left = 3;
             const int right = 7;
-            var parent1 = new Individual { Genes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
-            var parent2 = new Individual { Genes = new int[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
+            var parent1 = new Individual { Weights = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
+            var parent2 = new Individual { Weights = new double[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
 
             var result = orderOneCrossover.PerformOrderOneCrossover(parent1, parent2, left, right);
 
-            CollectionAssert.AreNotEqual(result.Item1.Genes, result.Item2.Genes);
+            CollectionAssert.AreNotEqual(result.Item1.Weights, result.Item2.Weights);
         }
 
         [TestMethod]
@@ -52,15 +52,15 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.CrossoverOperators
         {
             const int left = 3;
             const int right = 7;
-            var parent1 = new Individual { Genes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
-            var parent2 = new Individual { Genes = new int[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
+            var parent1 = new Individual { Weights = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
+            var parent2 = new Individual { Weights = new double[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
 
             var result = orderOneCrossover.PerformOrderOneCrossover(parent1, parent2, left, right);
 
-            var distinctOffspring1Genes = result.Item1.Genes.Distinct();
-            var distinctOffspring2Genes = result.Item2.Genes.Distinct();
-            Assert.IsTrue(distinctOffspring1Genes.Count() == result.Item1.Genes.Length);
-            Assert.IsTrue(distinctOffspring2Genes.Count() == result.Item2.Genes.Length);
+            var distinctOffspring1Genes = result.Item1.Weights.Distinct();
+            var distinctOffspring2Genes = result.Item2.Weights.Distinct();
+            Assert.IsTrue(distinctOffspring1Genes.Count() == result.Item1.Weights.Length);
+            Assert.IsTrue(distinctOffspring2Genes.Count() == result.Item2.Weights.Length);
         }
 
         [TestMethod]
@@ -69,15 +69,15 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.CrossoverOperators
 
             const int left = 7;
             const int right = 3;
-            var parent1 = new Individual { Genes = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
-            var parent2 = new Individual { Genes = new int[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
-            var expectedOffspring1 = new Individual { Genes = new int[] { 3, 8, 2, 4, 5, 6, 7, 1, 9 } };
-            var expectedOffspring2 = new Individual { Genes = new int[] { 3, 4, 7, 8, 2, 6, 5, 9, 1 } };
+            var parent1 = new Individual { Weights = new double[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
+            var parent2 = new Individual { Weights = new double[] { 9, 3, 7, 8, 2, 6, 5, 1, 4 } };
+            var expectedOffspring1 = new Individual { Weights = new double[] { 3, 8, 2, 4, 5, 6, 7, 1, 9 } };
+            var expectedOffspring2 = new Individual { Weights = new double[] { 3, 4, 7, 8, 2, 6, 5, 9, 1 } };
 
             var result = orderOneCrossover.PerformOrderOneCrossover(parent1, parent2, left, right);
 
-            CollectionAssert.AreEqual(expectedOffspring1.Genes, result.Item1.Genes);
-            CollectionAssert.AreEqual(expectedOffspring2.Genes, result.Item2.Genes);
+            CollectionAssert.AreEqual(expectedOffspring1.Weights, result.Item1.Weights);
+            CollectionAssert.AreEqual(expectedOffspring2.Weights, result.Item2.Weights);
         }
     }
 }

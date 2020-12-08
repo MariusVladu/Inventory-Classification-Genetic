@@ -2,7 +2,6 @@
 using InventoryClassificationGenetic.Providers.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace InventoryClassificationGenetic.Providers
 {
@@ -10,25 +9,35 @@ namespace InventoryClassificationGenetic.Providers
     {
         private readonly static Random random = new Random();
 
-        public List<Individual> GetInitialPopulation(int populationSize, int numberOfCities)
+        public List<Individual> GetInitialPopulation(int populationSize, int numberOfCriterias)
         {
             var initialPopulation = new List<Individual>();
 
             for (int i = 0; i < populationSize; i++)
-                initialPopulation.Add(GetRandomIndividual(numberOfCities));
+                initialPopulation.Add(GetRandomIndividual(numberOfCriterias));
 
             return initialPopulation;
         }
 
-        private Individual GetRandomIndividual(int numberOfCities)
+        private Individual GetRandomIndividual(int numberOfCriterias)
         {
-            var randomGenes = Enumerable.Range(0, numberOfCities)
-                .OrderBy(c => random.Next())
-                .ToArray();
+            var weights = new double[numberOfCriterias];
+            var remainingTotalWeight = 10000;
+
+            for (int i = 0; i < numberOfCriterias; i++)
+            {
+                var randomWeight = random.Next(0, remainingTotalWeight);
+                remainingTotalWeight -= randomWeight;
+
+                weights[i] = randomWeight / 10000.0;
+            }
+
+            for (int i = 0; i < numberOfCriterias; i++)
+                weights[i] += remainingTotalWeight / 10000.0;
 
             return new Individual
             {
-                Genes = randomGenes
+                Weights = weights
             };
         }
     }

@@ -8,28 +8,28 @@ namespace InventoryClassificationGenetic.Algorithm.CrossoverOperators
     {
         protected override Tuple<Individual, Individual> PerformCrossover(Individual parent1, Individual parent2)
         {
-            var crossoverPoint = random.Next(parent1.Genes.Length);
+            var crossoverPoint = random.Next(parent1.Weights.Length);
 
             return PerformOnePointCrossover(parent1, parent2, crossoverPoint);
         }
 
         public Tuple<Individual, Individual> PerformOnePointCrossover(Individual parent1, Individual parent2, int crossoverPoint)
         {
-            var numberOfGenes = parent1.Genes.Length;
-            var offspring1 = new Individual { Genes = new int[numberOfGenes] };
-            var offspring2 = new Individual { Genes = new int[numberOfGenes] };
+            var numberOfGenes = parent1.Weights.Length;
+            var offspring1 = new Individual { Weights = new double[numberOfGenes] };
+            var offspring2 = new Individual { Weights = new double[numberOfGenes] };
 
             for (int i = 0; i < numberOfGenes; i++)
             {
                 if (i < crossoverPoint)
                 {
-                    offspring1.Genes[i] = parent1.Genes[i];
-                    offspring2.Genes[i] = parent2.Genes[i];
+                    offspring1.Weights[i] = parent1.Weights[i];
+                    offspring2.Weights[i] = parent2.Weights[i];
                 }
                 else
                 {
-                    offspring1.Genes[i] = parent2.Genes[i];
-                    offspring2.Genes[i] = parent1.Genes[i];
+                    offspring1.Weights[i] = parent2.Weights[i];
+                    offspring2.Weights[i] = parent1.Weights[i];
                 }
             }
 

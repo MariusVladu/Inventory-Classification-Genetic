@@ -5,6 +5,6 @@ namespace InventoryClassificationGenetic.Providers.Contracts
 {
     public interface IInitialPopulationProvider
     {
-        List<Individual> GetInitialPopulation(int populationSize, int numberOfCities);
+        List<Individual> GetInitialPopulation(int populationSize, int numberOfCriterias);
     }
 }

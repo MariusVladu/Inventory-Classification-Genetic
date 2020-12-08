@@ -39,7 +39,7 @@ namespace InventoryClassificationGenetic.Algorithm
             this.crossoverOperator = crossoverOperator;
             this.mutationOperator = mutationOperator;
 
-            currentPopulation = initialPopulationProvider.GetInitialPopulation(settings.PopulationSize, settings.Cities.Count);
+            currentPopulation = initialPopulationProvider.GetInitialPopulation(settings.PopulationSize, settings.Inventory.Count);
             ComputeCurrentGenerationData();
         }
 

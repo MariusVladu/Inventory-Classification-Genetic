@@ -3,8 +3,8 @@ using InventoryClassificationGenetic.Domain;
 
 namespace InventoryClassificationGenetic.Providers.Contracts
 {
-    public interface ICitiesProvider
+    public interface IInventoryProvider
     {
-        List<City> Cities { get; }
+        List<Item> Inventory { get; }
     }
 }

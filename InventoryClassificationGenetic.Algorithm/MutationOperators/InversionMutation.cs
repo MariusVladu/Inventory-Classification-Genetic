@@ -14,8 +14,8 @@ namespace InventoryClassificationGenetic.Algorithm.MutationOperators
         {
             if (random.NextDouble() > mutationRate) return;
 
-            int leftIndex = random.Next(individual.Genes.Length);
-            int rightIndex = random.Next(individual.Genes.Length);
+            int leftIndex = random.Next(individual.Weights.Length);
+            int rightIndex = random.Next(individual.Weights.Length);
 
             ApplyInversionMutation(individual, leftIndex, rightIndex);
         }
@@ -24,12 +24,12 @@ namespace InventoryClassificationGenetic.Algorithm.MutationOperators
         {
             CommonFunctions.SwapIfNotInOrder(ref leftIndex, ref rightIndex);
 
-            Stack<int> stack = new Stack<int>();
+            var stack = new Stack<double>();
             for (int i = leftIndex; i < rightIndex; i++)
-                stack.Push(individual.Genes[i]);
+                stack.Push(individual.Weights[i]);
 
             for (int i = leftIndex; i < rightIndex; i++)
-                individual.Genes[i] = stack.Pop();
+                individual.Weights[i] = stack.Pop();
         }
     }
 }

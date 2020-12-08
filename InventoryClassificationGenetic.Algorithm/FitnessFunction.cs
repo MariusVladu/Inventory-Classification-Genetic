@@ -2,45 +2,43 @@
 using InventoryClassificationGenetic.Domain;
 using System.Collections.Generic;
 using System;
+using InventoryClassificationGenetic.Algorithm.Helpers;
 
 namespace InventoryClassificationGenetic.Algorithm
 {
     public class FitnessFunction : IFitnessFunction
     {
-        public readonly List<City> cities;
-        public readonly double[,] distances;
+        public readonly List<Item> inventory;
+        private readonly Classification classification;
 
-        public FitnessFunction(List<City> cities)
+        public FitnessFunction(List<Item> inventory)
         {
-            this.cities = cities;
+            this.inventory = inventory;
 
-            distances = CalculateDistances();
+            classification = new Classification(inventory);
         }
 
-        public int GetFitnessScore(Individual individual)
+        public double GetFitnessScore(Individual individual)
         {
-            var totalDistance = 0.0;
-            
-            for (int i = 1; i < cities.Count; i++)
-                totalDistance += distances[individual.Genes[i - 1], individual.Genes[i]];
+            var fitnessScore = 0.0;
 
-            return (int)totalDistance;
+            foreach (var item in inventory)
+                fitnessScore += GetClassificationScore(item, individual);
+
+            return fitnessScore;
         }
 
-        private double[,] CalculateDistances()
+        private double GetClassificationScore(Item item, Individual individual)
         {
-            var distances = new double[cities.Count, cities.Count];
+            var itemClass = classification.ClassifyItem(item, individual);
 
-            for (int i = 0; i < cities.Count; i++)
-                for (int j = 0; j < cities.Count; j++)
-                    distances[i, j] = CalculateDistanceBetweenTwoCities(cities[i], cities[j]);
+            if (itemClass == item.Class)
+                return 1.0;
 
-            return distances;
-        }
+            if (Math.Abs((int)itemClass - (int)item.Class) == 1)
+                return 0.4;
 
-        private double CalculateDistanceBetweenTwoCities(City city1, City city2)
-        {
-            return Math.Sqrt(Math.Pow(city1.X - city2.X, 2) + Math.Pow(city1.Y - city2.Y, 2));
+            return 0;
         }
     }
 }

@@ -27,8 +27,8 @@ namespace InventoryClassificationGenetic.UI
         private IInitialPopulationProvider initialPopulationProvider;
         private Settings settings;
 
-        private List<City> cities;
-        private List<Point> citiesForDisplay;
+        private List<Item> inventory;
+        //private List<Point> citiesForDisplay;
         private Graphics bestSolutionGraphics;
         private Pen linePen;
         private Pen pointPen;
@@ -62,7 +62,7 @@ namespace InventoryClassificationGenetic.UI
 
         private void InitializeGeneticAlgorithm()
         {
-            fitnessFunction = new FitnessFunction(cities);
+            fitnessFunction = new FitnessFunction(inventory);
             selectionOperator = new TournamentSelection(Convert.ToInt32(inputTournamentSize.Value));
             elitistSelection = new ElitistSelection();
             crossoverOperator = GetSelectedCrossoverOperator();
@@ -71,7 +71,7 @@ namespace InventoryClassificationGenetic.UI
 
             settings = new Settings
             {
-                Cities = cities,
+                Inventory = inventory,
                 NumberOfElites = Convert.ToInt32(inputElites.Value),
                 PopulationSize = Convert.ToInt32(inputMaxPopulation.Value),
                 CrossoverRate = Convert.ToDouble(inputCrossoverRate.Value),
@@ -87,7 +87,7 @@ namespace InventoryClassificationGenetic.UI
             bestScorePlotData = new List<double>();
             UpdatePlotData();
             Plot();
-            DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
+            //DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
 
             buttonNextGeneration.Enabled = true;
             buttonRun.Enabled = true;
@@ -100,7 +100,7 @@ namespace InventoryClassificationGenetic.UI
 
             UpdatePlotData();
             Plot();
-            DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
+            //DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
         }
 
         private void UpdatePlotData()
@@ -153,12 +153,12 @@ namespace InventoryClassificationGenetic.UI
                 if (i % 50 == 0)
                 {
                     Plot();
-                    DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
+                    //DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
                 }
             }
 
             Plot();
-            DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
+           // DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
             DisplayEllapsedTime(stopwatch.Elapsed);
         }
 
@@ -166,7 +166,7 @@ namespace InventoryClassificationGenetic.UI
         {
             InitializeGeneticAlgorithm();
             Plot();
-            DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
+           // DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
         }
 
         private void DisplayEllapsedTime(TimeSpan elapsedTime)
@@ -182,60 +182,60 @@ namespace InventoryClassificationGenetic.UI
 
             if (string.IsNullOrWhiteSpace(openFileDialog.FileName)) return;
 
-            var fileCitiesProvider = new FileCitiesProvider(openFileDialog.FileName);
+            var fileCitiesProvider = new FileInventoryProvider(openFileDialog.FileName);
 
-            cities = fileCitiesProvider.Cities;
-            citiesForDisplay = GetCitiesForDisplay();
+            inventory = fileCitiesProvider.Inventory;
+            //citiesForDisplay = GetCitiesForDisplay();
 
             InitializeGeneticAlgorithm();
-            labelCitiesInfo.Text = $"{new FileInfo(openFileDialog.FileName).Name} - {cities.Count} cities";
+            labelCitiesInfo.Text = $"{new FileInfo(openFileDialog.FileName).Name} - {inventory.Count} cities";
         }
 
-        private List<Point> GetCitiesForDisplay()
-        {
-            var citiesForDisplay = new List<City>();
+        //private List<Point> GetCitiesForDisplay()
+        //{
+        //    var citiesForDisplay = new List<City>();
 
-            foreach (var city in cities)
-                citiesForDisplay.Add(new City
-                {
-                    X = Math.Round(city.X),
-                    Y = Math.Round(city.Y)
-                });
+        //    foreach (var city in inventory)
+        //        citiesForDisplay.Add(new City
+        //        {
+        //            X = Math.Round(city.X),
+        //            Y = Math.Round(city.Y)
+        //        });
 
-            var minX = cities.Min(c => c.X);
-            var maxX = cities.Max(c => c.X);
-            var offsetX = 0 - minX;
-            var rangeX = GetRange(minX, maxX);
+        //    var minX = inventory.Min(c => c.X);
+        //    var maxX = inventory.Max(c => c.X);
+        //    var offsetX = 0 - minX;
+        //    var rangeX = GetRange(minX, maxX);
 
-            var minY = cities.Min(c => c.Y);
-            var maxY = cities.Max(c => c.Y);
-            var offsetY = 0 - minY;
-            var rangeY = GetRange(minY, maxY);
+        //    var minY = inventory.Min(c => c.Y);
+        //    var maxY = inventory.Max(c => c.Y);
+        //    var offsetY = 0 - minY;
+        //    var rangeY = GetRange(minY, maxY);
 
-            foreach (var city in citiesForDisplay)
-            {
-                city.X += offsetX;
-                city.Y += offsetY;
-            }
+        //    foreach (var city in citiesForDisplay)
+        //    {
+        //        city.X += offsetX;
+        //        city.Y += offsetY;
+        //    }
 
-            var scaleX = panelBestSolution.Size.Width;
-            var scaleY = panelBestSolution.Size.Height;
+        //    var scaleX = panelBestSolution.Size.Width;
+        //    var scaleY = panelBestSolution.Size.Height;
 
-            foreach (var city in citiesForDisplay)
-            {
-                city.X = (city.X / rangeX) * scaleX;
-                city.Y = (city.Y / rangeY) * scaleY;
-            }
+        //    foreach (var city in citiesForDisplay)
+        //    {
+        //        city.X = (city.X / rangeX) * scaleX;
+        //        city.Y = (city.Y / rangeY) * scaleY;
+        //    }
 
-            foreach (var city in citiesForDisplay)
-            {
-                city.Y = scaleY / 2 - (city.Y - scaleY / 2);
-            }
+        //    foreach (var city in citiesForDisplay)
+        //    {
+        //        city.Y = scaleY / 2 - (city.Y - scaleY / 2);
+        //    }
 
-            return citiesForDisplay
-                .Select(c => new Point((int)Math.Round(c.X), (int)Math.Round(c.Y)))
-                .ToList();
-        }
+        //    return citiesForDisplay
+        //        .Select(c => new Point((int)Math.Round(c.X), (int)Math.Round(c.Y)))
+        //        .ToList();
+        //}
 
         private double GetRange(double x1, double x2)
         {
@@ -248,25 +248,25 @@ namespace InventoryClassificationGenetic.UI
             return Math.Abs(Math.Abs(x1) - Math.Abs(x2));
         }
 
-        private void DrawSolution(Solution solution, Panel panel, Graphics graphics)
-        {
-            graphics.Clear(Color.DarkGray);
+        //private void DrawSolution(Solution solution, Panel panel, Graphics graphics)
+        //{
+        //    graphics.Clear(Color.DarkGray);
 
-            for (int i = 1; i < solution.Individual.Genes.Length; i++)
-                graphics.DrawLine(
-                    linePen,
-                    citiesForDisplay[solution.Individual.Genes[i - 1]],
-                    citiesForDisplay[solution.Individual.Genes[i]]);
+        //    for (int i = 1; i < solution.Individual.Weights.Length; i++)
+        //        graphics.DrawLine(
+        //            linePen,
+        //            citiesForDisplay[solution.Individual.Weights[i - 1]],
+        //            citiesForDisplay[solution.Individual.Weights[i]]);
 
-            foreach (var city in citiesForDisplay)
-                graphics.FillRectangle(pointPen.Brush, city.X - pointWidth / 2, city.Y - pointWidth / 2, pointWidth, pointWidth);
-        }
+        //    foreach (var city in citiesForDisplay)
+        //        graphics.FillRectangle(pointPen.Brush, city.X - pointWidth / 2, city.Y - pointWidth / 2, pointWidth, pointWidth);
+        //}
 
         private void panelBestSolution_Paint(object sender, PaintEventArgs e)
         {
             if (geneticAlgorithm == null) return;
 
-            DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
+            //DrawSolution(geneticAlgorithm.CurrentBestSolution, panelBestSolution, bestSolutionGraphics);
         }
 
         private ICrossoverOperator GetSelectedCrossoverOperator()

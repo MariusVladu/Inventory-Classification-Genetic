@@ -22,13 +22,13 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int index1 = 1;
             const int index2 = 3;
-            var initialGenes =  new int[] { 1, 2, 3, 4 };
-            var expectedGenes = new int[] { 1, 4, 3, 2 };
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes =  new double[] { 1, 2, 3, 4 };
+            var expectedGenes = new double[] { 1, 4, 3, 2 };
+            var individual = new Individual { Weights = initialGenes };
 
             swapMutation.ApplySwapMutation(individual, index1, index2);
 
-            CollectionAssert.AreEqual(expectedGenes, individual.Genes);
+            CollectionAssert.AreEqual(expectedGenes, individual.Weights);
         }
 
         [TestMethod]
@@ -36,13 +36,13 @@ namespace InventoryClassificationGenetic.Algorithm.UnitTests.MutationOperators
         {
             const int index1 = 1;
             const int index2 = 1;
-            var initialGenes = new int[] { 1, 2, 3, 4 };
-            var expectedGenes = new int[] { 1, 2, 3, 4 };
-            var individual = new Individual { Genes = initialGenes };
+            var initialGenes = new double[] { 1, 2, 3, 4 };
+            var expectedGenes = new double[] { 1, 2, 3, 4 };
+            var individual = new Individual { Weights = initialGenes };
 
             swapMutation.ApplySwapMutation(individual, index1, index2);
 
-            CollectionAssert.AreEqual(expectedGenes, individual.Genes);
+            CollectionAssert.AreEqual(expectedGenes, individual.Weights);
         }
     }
 }

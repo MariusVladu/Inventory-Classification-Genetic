@@ -5,11 +5,11 @@ namespace InventoryClassificationGenetic.Domain
     public class Solution
     {
         public Individual Individual { get; set; }
-        public int FitnessScore { get; set; }
+        public double FitnessScore { get; set; }
 
         public override string ToString()
         {
-            return $"{string.Join( ", ", Individual.Genes)} - Score = {FitnessScore}";
+            return $"{string.Join( ", ", Individual.Weights)} - Score = {FitnessScore}";
         }
     }
 }

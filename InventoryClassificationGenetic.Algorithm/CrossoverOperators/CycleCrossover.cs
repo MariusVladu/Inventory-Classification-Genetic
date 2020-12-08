@@ -7,7 +7,7 @@ namespace InventoryClassificationGenetic.Algorithm.CrossoverOperators
 {
     public class CycleCrossover : BaseCrossoverOperator
     {
-        private const int UnsetValue = -1;
+        private const double UnsetValue = -1.0;
 
         protected override Tuple<Individual, Individual> PerformCrossover(Individual parent1, Individual parent2)
         {
@@ -24,21 +24,21 @@ namespace InventoryClassificationGenetic.Algorithm.CrossoverOperators
 
         private Individual GetOffspring(Individual parent1, Individual parent2)
         {
-            var offspring = new Individual { Genes = Enumerable.Repeat(UnsetValue, parent1.Genes.Length).ToArray() };
+            var offspring = new Individual { Weights = Enumerable.Repeat(UnsetValue, parent1.Weights.Length).ToArray() };
 
             var currentParent1 = parent1;
             var currentParent2 = parent2;
 
-            while(offspring.Genes.Any(x => x == UnsetValue))
+            while(offspring.Weights.Any(x => x == UnsetValue))
             {
                 var firstFreeValueIndex = GetIndexOf(UnsetValue, offspring);
 
                 var index = firstFreeValueIndex;
                 do
                 {
-                    offspring.Genes[index] = currentParent1.Genes[index];
+                    offspring.Weights[index] = currentParent1.Weights[index];
 
-                    var correspondingValue = currentParent2.Genes[index];
+                    var correspondingValue = currentParent2.Weights[index];
 
                     index = GetIndexOf(correspondingValue, currentParent1);
                 } while (index != firstFreeValueIndex);
@@ -49,10 +49,10 @@ namespace InventoryClassificationGenetic.Algorithm.CrossoverOperators
             return offspring;
         }
 
-        private int GetIndexOf(int value, Individual parent)
+        private int GetIndexOf(double value, Individual parent)
         {
-            for (int i = 0; i < parent.Genes.Length; i++)
-                if (parent.Genes[i] == value)
+            for (int i = 0; i < parent.Weights.Length; i++)
+                if (parent.Weights[i] == value)
                     return i;
 
             return -1;
