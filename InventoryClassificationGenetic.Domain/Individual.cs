@@ -10,9 +10,7 @@
         {
             return new Individual
             {
-                Weights = (double[])this.Weights.Clone(),
-                Xab = this.Xab,
-                Xbc = this.Xbc
+                Weights = (double[])this.Weights.Clone()
             };
         }
     }
