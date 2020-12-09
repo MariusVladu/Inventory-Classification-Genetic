@@ -35,7 +35,6 @@
             this.buttonRun = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.inputGenerationsNumber = new System.Windows.Forms.NumericUpDown();
-            this.chartBestScore = new ScottPlot.FormsPlot();
             this.label2 = new System.Windows.Forms.Label();
             this.inputMutationRate = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -72,7 +71,7 @@
             this.chartAverageScore.Location = new System.Drawing.Point(13, 41);
             this.chartAverageScore.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chartAverageScore.Name = "chartAverageScore";
-            this.chartAverageScore.Size = new System.Drawing.Size(568, 327);
+            this.chartAverageScore.Size = new System.Drawing.Size(568, 488);
             this.chartAverageScore.TabIndex = 1;
             // 
             // labelGenerationInfo
@@ -120,14 +119,6 @@
             0,
             0});
             // 
-            // chartBestScore
-            // 
-            this.chartBestScore.Location = new System.Drawing.Point(13, 374);
-            this.chartBestScore.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.chartBestScore.Name = "chartBestScore";
-            this.chartBestScore.Size = new System.Drawing.Size(568, 327);
-            this.chartBestScore.TabIndex = 6;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -160,7 +151,7 @@
             this.inputMutationRate.Size = new System.Drawing.Size(71, 23);
             this.inputMutationRate.TabIndex = 5;
             this.inputMutationRate.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             131072});
@@ -228,7 +219,7 @@
             this.inputMaxPopulation.Size = new System.Drawing.Size(71, 23);
             this.inputMaxPopulation.TabIndex = 5;
             this.inputMaxPopulation.Value = new decimal(new int[] {
-            200,
+            100,
             0,
             0,
             0});
@@ -318,7 +309,7 @@
             // labelLoadedFileInfo
             // 
             this.labelLoadedFileInfo.AutoSize = true;
-            this.labelLoadedFileInfo.Location = new System.Drawing.Point(814, 16);
+            this.labelLoadedFileInfo.Location = new System.Drawing.Point(706, 38);
             this.labelLoadedFileInfo.Name = "labelLoadedFileInfo";
             this.labelLoadedFileInfo.Size = new System.Drawing.Size(81, 15);
             this.labelLoadedFileInfo.TabIndex = 9;
@@ -328,7 +319,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 724);
+            this.ClientSize = new System.Drawing.Size(868, 541);
             this.Controls.Add(this.labelLoadedFileInfo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonReset);
@@ -342,7 +333,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.inputMutationRate);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chartBestScore);
             this.Controls.Add(this.inputGenerationsNumber);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRun);
@@ -370,7 +360,6 @@
         private System.Windows.Forms.Button buttonRun;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown inputGenerationsNumber;
-        private ScottPlot.FormsPlot chartBestScore;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown inputMutationRate;
         private System.Windows.Forms.Label label3;

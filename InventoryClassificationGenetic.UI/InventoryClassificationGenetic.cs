@@ -36,13 +36,11 @@ namespace InventoryClassificationGenetic.UI
         {
             InitializeComponent();
 
+            chartAverageScore.plt.Legend();
             chartAverageScore.plt.XLabel("Generation #");
-            chartAverageScore.plt.YLabel("Average Fitness Score");
-            chartBestScore.plt.XLabel("Generation #");
-            chartBestScore.plt.YLabel("Best Fitness Score");
+            chartAverageScore.plt.YLabel("Fitness Score");
 
             chartAverageScore.Render();
-            chartBestScore.Render();
 
             buttonNextGeneration.Enabled = false;
             buttonRun.Enabled = false;
@@ -103,14 +101,10 @@ namespace InventoryClassificationGenetic.UI
             var generationsPlotArray = generationsPlotData.ToArray();
 
             chartAverageScore.plt.Clear();
-            chartAverageScore.plt.PlotScatter(generationsPlotArray, averageScorePlotData.ToArray(), Color.Blue);
+            chartAverageScore.plt.PlotScatter(generationsPlotArray, averageScorePlotData.ToArray(), Color.Blue, 1, 5, "Average");
+            chartAverageScore.plt.PlotScatter(generationsPlotArray, bestScorePlotData.ToArray(), Color.Green, 1, 5, "Best");
             chartAverageScore.plt.AxisAuto();
             chartAverageScore.Render();
-
-            chartBestScore.plt.Clear();
-            chartBestScore.plt.PlotScatter(generationsPlotArray, bestScorePlotData.ToArray(), Color.Green);
-            chartBestScore.plt.AxisAuto();
-            chartBestScore.Render();
 
             ShowBestSolution();
         }
