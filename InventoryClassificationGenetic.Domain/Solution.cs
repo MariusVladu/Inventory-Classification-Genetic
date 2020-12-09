@@ -10,9 +10,9 @@ namespace InventoryClassificationGenetic.Domain
 
         public override string ToString()
         {
-            return $"Weights: {string.Join( ", ", Individual.Weights.Select(w => Math.Round(w, 4)))} " +
-                $"\nXab: {Individual.Xab} " +
-                $"\nXbc: {Individual.Xbc} " +
+            return $"Weights: {string.Join(", ", Individual.Weights.Select(w => Math.Round(w, 4)))} " +
+                $"\nXab: {Math.Round(Individual.Xab, 4)} " +
+                $"\nXbc: {Math.Round(Individual.Xbc, 4)} " +
                 $"\nScore = {Math.Round(FitnessScore, 4)}";
         }
     }

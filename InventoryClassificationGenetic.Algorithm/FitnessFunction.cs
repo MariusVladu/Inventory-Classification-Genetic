@@ -25,7 +25,7 @@ namespace InventoryClassificationGenetic.Algorithm
             foreach (var item in inventory)
                 fitnessScore += GetClassificationScore(item, individual);
 
-            return fitnessScore;
+            return fitnessScore / inventory.Count;
         }
 
         private double GetClassificationScore(Item item, Individual individual)
