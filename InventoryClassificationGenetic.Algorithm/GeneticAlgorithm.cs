@@ -50,7 +50,7 @@ namespace InventoryClassificationGenetic.Algorithm
             while (nextGeneration.Count < settings.PopulationSize)
             {
                 var parent1 = selectionOperator.SelectOne(CurrentSolutions);
-                var parent2 = selectionOperator.SelectOne(CurrentSolutions.Where(x => !ReferenceEquals(x, parent1)).ToList());
+                var parent2 = selectionOperator.SelectOne(CurrentSolutions.Where(x => !ReferenceEquals(x.Individual, parent1)).ToList());
 
                 var offsprings = crossoverOperator.GetOffsprings(parent1, parent2, settings.CrossoverRate);
 
